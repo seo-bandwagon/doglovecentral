@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dog Love Central — Alison Ward | Dog Boarding & Daycare</title>
+  <meta name="description" content="Trusted dog boarding and daycare by Alison Ward. A calm, loving home environment for your best friend.">
+  <link rel="canonical" href="https://doglovecentral.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F8F5EC;
+      --sage: #7C947D;
+      --sage-dark: #586F5B;
+      --ink: #2E332E;
+      --sage-light: #A8BFA9;
+      --sage-muted: #E4EBE4;
+      --white: #FFFFFF;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--cream); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: all 0.4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(248,245,236,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom-color: var(--sage-muted);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 16px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-circle {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--sage);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', Georgia, serif; color: var(--cream);
+      font-size: 16px; font-weight: 700;
+    }
+    .nav-logo-text {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 18px; color: var(--ink); letter-spacing: -0.3px;
+    }
+    .nav-links { display: flex; gap: 32; align-items: center; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+      color: var(--sage-dark); padding-bottom: 2px;
+      border-bottom: 2px solid transparent; transition: all 0.2s;
+    }
+    .nav-links a:hover { border-bottom-color: var(--sage); }
+    .nav-hamburger {
+      display: none; background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px; background: var(--ink);
+      margin: 5px 0; transition: 0.3s;
+    }
+    .nav-mobile { display: none; background: var(--cream); padding: 8px 24px 20px; flex-direction: column; gap: 16px; }
+    .nav-mobile a { font-size: 16px; font-weight: 500; color: var(--sage-dark); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+      .nav-hamburger { display: block !important; }
+      .nav-mobile.open { display: flex !important; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(170deg, var(--cream) 0%, var(--sage-muted) 100%);
+      min-height: 92vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-circle {
+      position: absolute; border-radius: 50%;
+    }
+    .hero-circle-1 { top: -80px; right: -80px; width: 320px; height: 320px; background: var(--sage-light); opacity: 0.15; }
+    .hero-circle-2 { bottom: -50px; left: -50px; width: 220px; height: 220px; background: var(--sage); opacity: 0.1; }
+    .hero-circle-3 { top: 50%; left: 10%; width: 12px; height: 12px; background: var(--sage); opacity: 0.25; }
+    .hero-circle-4 { top: 30%; right: 15%; width: 8px; height: 8px; background: var(--sage-dark); opacity: 0.2; }
+    .hero-content {
+      text-align: center; padding: 80px 24px 60px; max-width: 680px;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block; padding: 6px 18px; border-radius: 40px;
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--sage-dark); border: 1.5px solid var(--sage);
+      margin-bottom: 28px; font-weight: 600;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(40px, 7vw, 68px); color: var(--ink);
+      line-height: 1.1; margin-bottom: 20px; font-weight: 400;
+    }
+    .hero h1 span { color: var(--sage); }
+    .hero p {
+      font-size: 17px; color: var(--sage-dark); line-height: 1.65;
+      max-width: 480px; margin: 0 auto 36px;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--sage); color: var(--cream); font-weight: 600;
+      font-size: 15px; padding: 14px 32px; border-radius: 8px;
+      transition: all 0.3s; border: none;
+    }
+    .btn-primary:hover { background: var(--sage-dark); }
+    .btn-outline {
+      background: transparent; color: var(--sage-dark); font-weight: 600;
+      font-size: 15px; padding: 14px 32px; border-radius: 8px;
+      border: 1.5px solid var(--sage); transition: all 0.3s;
+    }
+    .btn-outline:hover { background: var(--sage); color: var(--cream); }
+
+    /* ── ABOUT ── */
+    .about { background: var(--white); padding: 80px 24px; }
+    .about-inner {
+      max-width: 860px; margin: 0 auto; display: flex; gap: 48px;
+      align-items: center; flex-wrap: wrap; justify-content: center;
+    }
+    .about-avatar {
+      width: 220px; height: 220px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--sage-muted), var(--sage-light));
+      display: flex; align-items: center; justify-content: center; font-size: 80px;
+    }
+    .about-text { flex: 1; min-width: 280px; }
+    .section-label {
+      font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--sage); font-weight: 600; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      color: var(--ink); margin-bottom: 16px; font-weight: 400; line-height: 1.2;
+    }
+    .about .section-title { font-size: 32px; }
+    .about-text p { font-size: 15.5px; color: var(--sage-dark); line-height: 1.75; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--cream); padding: 80px 24px; }
+    .services-inner { max-width: 960px; margin: 0 auto; text-align: center; }
+    .services .section-title { font-size: 34px; margin-bottom: 48px; }
+    .services-grid { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+    .service-card {
+      flex: 1 1 260px; max-width: 300px; background: var(--white);
+      border-radius: 14px; padding: 36px 28px; text-align: left;
+      box-shadow: 0 2px 16px rgba(88,111,91,0.07);
+      border: 1px solid var(--sage-muted);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(88,111,91,0.12); }
+    .service-card .icon { font-size: 36px; margin-bottom: 16px; }
+    .service-card h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 20px; color: var(--ink); margin-bottom: 10px; font-weight: 400;
+    }
+    .service-card p { font-size: 14.5px; color: var(--sage-dark); line-height: 1.7; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--sage-dark); padding: 80px 24px; }
+    .testimonials-inner { max-width: 960px; margin: 0 auto; text-align: center; }
+    .testimonials .section-label { color: var(--sage-light); }
+    .testimonials .section-title { font-size: 34px; color: var(--cream); margin-bottom: 48px; }
+    .testimonials-grid { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .testimonial-card {
+      flex: 1 1 260px; max-width: 300px;
+      background: rgba(248,245,236,0.08);
+      border-radius: 14px; padding: 32px 24px; text-align: left;
+      border: 1px solid rgba(168,191,169,0.2);
+    }
+    .testimonial-card .quote {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 40px; color: var(--sage); line-height: 1; margin-bottom: 8px;
+    }
+    .testimonial-card p { font-size: 14.5px; color: var(--cream); line-height: 1.7; margin-bottom: 16px; opacity: 0.92; }
+    .testimonial-card .name { font-size: 13px; color: var(--sage-light); font-weight: 600; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); padding: 80px 24px; }
+    .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .contact .section-title { font-size: 34px; margin-bottom: 16px; }
+    .contact > .contact-inner > p { font-size: 15px; color: var(--sage-dark); line-height: 1.65; margin-bottom: 40px; }
+    .contact-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .contact-card {
+      display: flex; align-items: center; gap: 12px; background: var(--cream);
+      border-radius: 12px; padding: 20px 28px;
+      border: 1px solid var(--sage-muted); min-width: 220px; justify-content: center;
+      transition: all 0.3s;
+    }
+    .contact-card:hover { border-color: var(--sage); }
+    .contact-card .emoji { font-size: 22px; }
+    .contact-card .label {
+      font-size: 11px; color: var(--sage); font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .contact-card .value { font-size: 16px; color: var(--ink); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--ink); padding: 40px 24px; text-align: center; }
+    .footer-inner { max-width: 600px; margin: 0 auto; }
+    .footer-brand {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 20px; color: var(--cream); margin-bottom: 8px;
+    }
+    .footer p { font-size: 13px; color: var(--sage-light); margin-bottom: 6px; opacity: 0.7; }
+    .footer .copy { font-size: 12px; opacity: 0.5; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content { animation: fadeInUp 0.8s ease-out; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-circle">AW</div>
+        <span class="nav-logo-text">Dog Love Central</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span id="bar1"></span><span id="bar2"></span><span id="bar3"></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#testimonials" onclick="closeMenu()">Testimonials</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-circle hero-circle-1"></div>
+    <div class="hero-circle hero-circle-2"></div>
+    <div class="hero-circle hero-circle-3"></div>
+    <div class="hero-circle hero-circle-4"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Dog Boarding &amp; Daycare</div>
+      <h1>Where Every Dog<br>Feels at <span>Home</span></h1>
+      <p>A trusted, loving space for your best friend. Personalized care from Alison Ward in a calm, home environment.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-avatar">🐕</div>
+      <div class="about-text">
+        <p class="section-label">About Alison</p>
+        <h2 class="section-title">Trusted care, built on love</h2>
+        <p>Hi, I'm Alison! I've been caring for dogs for over a decade because there's nothing more rewarding than earning a pup's trust. At Dog Love Central, every dog gets individual attention, a consistent routine, and a safe space to play and relax. Your dog isn't just another booking — they're part of the family.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="icon">🏠</div>
+          <h3>Overnight Boarding</h3>
+          <p>Your pup sleeps in a cozy, home-like environment with plenty of attention and care.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon">☀️</div>
+          <h3>Daycare</h3>
+          <p>Full-day supervised play, socialization, and rest for dogs of all sizes and energy levels.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon">🐾</div>
+          <h3>Extended Stays</h3>
+          <p>Going on vacation? We provide consistent routines and daily updates so you never worry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-inner">
+      <p class="section-label">Happy Pups &amp; Their People</p>
+      <h2 class="section-title">What Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="quote">&ldquo;</div>
+          <p>Alison treats our dog like family. We never worry when Benny is at Dog Love Central.</p>
+          <div class="name">— Sarah M.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">&ldquo;</div>
+          <p>The only place our anxious rescue will actually relax. Alison has a gift with dogs.</p>
+          <div class="name">— James &amp; Tina R.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">&ldquo;</div>
+          <p>Daily photo updates, flexible scheduling, and our pup comes home happy every time.</p>
+          <div class="name">— Priya K.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Reach Out</p>
+      <h2 class="section-title">Let's Meet Your Pup</h2>
+      <p>Ready to book or have questions? Give us a call or drop an email — we'd love to hear from you and your dog.</p>
+      <div class="contact-cards">
+        <a href="tel:971-227-6931" class="contact-card">
+          <span class="emoji">📞</span>
+          <div>
+            <div class="label">Phone</div>
+            <div class="value">971-227-6931</div>
+          </div>
+        </a>
+        <a href="mailto:alison@example.com" class="contact-card">
+          <span class="emoji">✉️</span>
+          <div>
+            <div class="label">Email</div>
+            <div class="value">alison@example.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">Dog Love Central</div>
+      <p>Alison Ward · Dog Boarding &amp; Daycare</p>
+      <p class="copy">&copy; 2026 doglovecentral.com. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll nav background
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    let menuOpen = false;
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      document.getElementById('mobileMenu').classList.toggle('open', menuOpen);
+      document.getElementById('bar1').style.transform = menuOpen ? 'rotate(45deg) translate(5px,5px)' : '';
+      document.getElementById('bar2').style.opacity = menuOpen ? '0' : '1';
+      document.getElementById('bar3').style.transform = menuOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
+    }
+    function closeMenu() {
+      menuOpen = false;
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('bar1').style.transform = '';
+      document.getElementById('bar2').style.opacity = '1';
+      document.getElementById('bar3').style.transform = '';
+    }
+  </script>
+
+</body>
+</html>
