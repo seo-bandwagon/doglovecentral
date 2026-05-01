@@ -130,9 +130,9 @@
     }
     .about-avatar {
       width: 220px; height: 220px; border-radius: 50%; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--sage-muted), var(--sage-light));
-      display: flex; align-items: center; justify-content: center; font-size: 80px;
+      overflow: hidden;
     }
+    .about-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .about-text { flex: 1; min-width: 280px; }
     .section-label {
       font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
@@ -269,7 +269,9 @@
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="about-inner">
-      <div class="about-avatar">🐕</div>
+      <div class="about-avatar">
+        <img src="alison-ward-dog-boarding-beaverton.webp" alt="Alison Ward with her dog Papi — dog boarding in Beaverton" width="440" height="440" loading="lazy">
+      </div>
       <div class="about-text">
         <p class="section-label">About Alison</p>
         <h2 class="section-title">Trusted care, built on love</h2>
